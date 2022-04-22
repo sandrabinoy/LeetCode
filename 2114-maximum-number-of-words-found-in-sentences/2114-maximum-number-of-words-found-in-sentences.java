@@ -2,10 +2,10 @@ class Solution {
     public int mostWordsFound(String[] sentences) {
         
         int maxWord = 0;
-        for (int i = 0; i < sentences.length; i++) {
+        for (String s : sentences) {
             int count = 1;
-            for (int j = 0; j < sentences[i].length(); j++) {
-                if (Character.isWhitespace(sentences[i].charAt(j))) {
+            for (int j = 0; j < s.length(); j++) {
+                if (Character.isWhitespace(s.charAt(j))) {
                     count++;
                 }
             }
