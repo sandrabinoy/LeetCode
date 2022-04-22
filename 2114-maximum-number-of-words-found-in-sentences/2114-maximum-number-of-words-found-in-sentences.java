@@ -9,9 +9,8 @@ class Solution {
                     count++;
                 }
             }
-            if (count > maxWord) {
-                maxWord = count;
-            }
+            maxWord = count > maxWord ? count : maxWord;
+
         }
         return maxWord;
     }
