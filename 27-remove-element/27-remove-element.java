@@ -4,10 +4,10 @@ class Solution {
         int j = 0;
         for (int i = 0; i < nums.length; i++) {
             
-            if (nums[i] == val) {
-                continue;
+            if (nums[i] != val) {
+                nums[j++] = nums[i];
             }
-            nums[j++] = nums[i];
+            
             
         }
         return j;
