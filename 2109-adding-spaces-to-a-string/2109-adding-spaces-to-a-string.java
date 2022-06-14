@@ -9,7 +9,6 @@ class Solution {
             
             int curr = spaces[i];
             str[i] = s.substring(ptr, curr) + " ";
-            System.out.println(str[i]);
             ptr = curr;
             
         }
