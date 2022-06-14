@@ -13,13 +13,16 @@ class Solution {
         
         if( head == null || head.next == null)
             return head;
-        ListNode ptr = head;
-        while(ptr != null && ptr.next != null){
-		
-            while(ptr.next != null && ptr.val == ptr.next.val)
-                ptr.next = ptr.next.next;
-                ptr = ptr.next;            
+        ListNode temp = head;
+        
+        while(temp.next!=null){
+            if(temp.val == temp.next.val){
+                temp.next = temp.next.next;
+            }else{
+                temp = temp.next;
+            }
         }
+        
         return head;
         
     }
