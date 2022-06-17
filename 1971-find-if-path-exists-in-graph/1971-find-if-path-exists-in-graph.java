@@ -3,7 +3,7 @@ class Solution {
         
         Map<Integer, List<Integer>> adjList = constructGraph(edges);
         boolean[] visited = new boolean[n];
-        return hasPath(adjList, visited, source, destination);
+        return hasPathBFS(adjList, visited, source, destination);
         
     }
     
@@ -26,7 +26,37 @@ class Solution {
         
     }
     
-    public boolean hasPath (Map<Integer, List<Integer>> adjList, boolean[] visited, int source, int destination) {
+    public boolean hasPathBFS (Map<Integer, List<Integer>> adjList, boolean[] visited, int source, int destination) {
+        
+        if (source == destination) {
+            return true;
+        }
+        
+        Queue<Integer> q = new PriorityQueue<>();
+        q.add(source);
+        visited[source] = true;
+        
+        while (!q.isEmpty()) {
+            
+            int current = q.poll();
+            
+            for (int node : adjList.get(current)) {
+                if (node == destination) {
+                    return true;
+                }
+                if (visited[node] != true) {
+                    visited[node] = true;
+                    q.add(node);
+                }
+            }
+            
+        }
+        
+        return false;
+        
+    }
+    
+    public boolean hasPathDFS (Map<Integer, List<Integer>> adjList, boolean[] visited, int source, int destination) {
         
         visited[source] = true;
         if (source == destination) {
@@ -35,7 +65,7 @@ class Solution {
         
         for (int neighbour : adjList.get(source)) {
             if (visited[neighbour] != true) {
-                if (hasPath (adjList, visited, neighbour, destination) == true) {
+                if (hasPathDFS (adjList, visited, neighbour, destination) == true) {
                     return true;
                 }
             }
